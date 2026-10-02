@@ -17,7 +17,9 @@ function fixture(t) {
 }
 test('new project configuration drives identity, namespace, preview, build and ZIP filename', t => {
   const dir = fixture(t);
-  const result = cp.spawnSync(process.execPath, ['tools/init.js', '--name', 'different-game', '--title', '我的|新游戏', '--version', '2.3.4', '--description', 'Independent game', '--appid', 'wx0123456789abcdef'], { cwd: dir, encoding: 'utf8' });
+  // Synthetic format-only AppID; never obtained from a WeChat account.
+  const fixtureAppId = 'wx' + Array.from({ length: 16 }, (_, index) => index.toString(16)).join('');
+  const result = cp.spawnSync(process.execPath, ['tools/init.js', '--name', 'different-game', '--title', '我的|新游戏', '--version', '2.3.4', '--description', 'Independent game', '--appid', fixtureAppId], { cwd: dir, encoding: 'utf8' });
   assert.equal(result.status, 0, result.stderr);
   const pkg = JSON.parse(fs.readFileSync(path.join(dir, 'package.json')));
   assert.equal(pkg.name, 'different-game'); assert.equal(pkg.version, '2.3.4');
@@ -28,7 +30,7 @@ test('new project configuration drives identity, namespace, preview, build and Z
   const packaged = cp.spawnSync(process.execPath, ['tools/package.js'], { cwd: dir, encoding: 'utf8', env: { ...process.env, WECHAT_APPID: '' } });
   assert.equal(packaged.status, 0, packaged.stderr);
   const config = JSON.parse(fs.readFileSync(path.join(dir, 'dist/wechat/project.config.json')));
-  assert.equal(config.appid, 'wx0123456789abcdef'); assert.equal(config.projectname, 'different-game');
+  assert.equal(config.appid, fixtureAppId); assert.equal(config.projectname, 'different-game');
   assert.ok(fs.existsSync(path.join(dir, 'dist/different-game-2.3.4.zip')));
 });
 test('invalid initialization leaves project configuration unchanged', t => {
