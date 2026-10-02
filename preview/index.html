@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1428">
+  <title>微信小游戏示例</title>
+  <link rel="icon" type="image/png" href="../assets/icon.png">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: #080e1b; color: #eef5ff; font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; }
+    body { min-height: 100vh; min-height: 100dvh; display: grid; grid-template-columns: minmax(230px, 1fr) minmax(300px, 440px) minmax(80px, 1fr); align-items: center; gap: 56px; padding: 32px 7vw; background: radial-gradient(ellipse at 68% 40%, #172c3d 0, #0c1728 38%, #080e1b 75%); }
+    .intro { justify-self: end; max-width: 300px; }
+    .eyebrow { color: #8cdcc9; font-size: 11px; letter-spacing: 4px; }
+    h1 { font-size: 38px; line-height: 1.35; font-weight: 750; margin: 24px 0 16px; }
+    .intro p { color: #97a9bd; line-height: 1.9; font-size: 14px; }
+    .divider { width: 40px; height: 2px; background: #ffd879; margin: 28px 0; }
+    .note { color: #697e96; font-size: 12px; line-height: 1.9; }
+    .phone { width: 100%; height: min(820px, calc(100dvh - 64px)); min-height: 480px; border: 1px solid #304050; border-radius: 34px; overflow: hidden; box-shadow: 0 28px 100px #0008, 0 0 80px #75d6be08; background: #0b1428; }
+    canvas { display: block; width: 100%; height: 100%; touch-action: none; user-select: none; outline: none; }
+    footer { position: fixed; bottom: 14px; left: 0; right: 0; text-align: center; color: #405367; font-size: 10px; letter-spacing: 2px; pointer-events: none; }
+    @media (max-width: 850px) { body { display: flex; padding: 0; justify-content: center; gap: 0; } .intro, footer { display: none; } .phone { border: 0; border-radius: 0; height: 100dvh; max-width: 480px; min-height: 0; } }
+  </style>
+</head>
+<body>
+  <aside class="intro">
+    <div class="eyebrow">A LITTLE MOMENT OF JOY</div>
+    <h1>把星光<br>收进口袋。</h1>
+    <p>一只小篮子，一场流星雨。<br>用 60 秒，接住今晚的好运气。</p>
+    <div class="divider"></div>
+    <div class="note">拖动篮子接星星，留心落下的小石头。<br>电脑也可使用 ← → 移动，空格开始，P 暂停。</div>
+  </aside>
+  <main class="phone" aria-label="微信小游戏示例"><canvas id="game" tabindex="0" aria-label="游戏画布：拖动篮子接星星，避开石头"></canvas></main>
+  <footer>微信小游戏示例</footer>
+  <script src="bundle.js"></script>
+</body>
+</html>

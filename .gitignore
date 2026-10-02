@@ -1,0 +1,14 @@
+.worktrees/
+.tools/
+node_modules/
+artifacts/
+dist/
+project.private.config.json
+*.log
+preview/bundle.js
+
+.env
+.env.*
+!.env.example
+*.pem
+*.key

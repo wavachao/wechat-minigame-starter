@@ -1,0 +1,19 @@
+{
+  "name": "wechat-minigame-starter",
+  "version": "0.1.0",
+  "private": true,
+  "description": "微信小游戏示例项目",
+  "scripts": {
+    "build": "node tools/build.js",
+    "preview": "node tools/serve.js",
+    "check": "node tools/check.js",
+    "test": "node tools/test.js",
+    "package": "node tools/package.js",
+    "wechat": "node tools/wechat.js",
+    "init": "node tools/init.js",
+    "test:browser": "node tests/browser-smoke.cjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
