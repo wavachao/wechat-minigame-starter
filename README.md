@@ -15,7 +15,9 @@ npm run check
 npm run preview
 ```
 
-打开 http://127.0.0.1:4173。保留两行游戏标题，每行最多五个字符；其他布局可直接修改 src/renderer.js。
+在浏览器打开 [本地游戏预览](http://127.0.0.1:4173)。
+
+`--title` 用 `|` 将游戏标题分成两行，每行最多五个字符。其他布局可直接修改 `src/renderer.js`。
 
 通过克隆开始时，origin 指向本模板仓库。开发自己的项目前，将远程地址改为自己的仓库，或直接使用 GitHub 的 Use this template。
 
